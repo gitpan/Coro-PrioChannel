@@ -12,4 +12,5 @@ t/00_load.t
 t/02_channel.t
 t/03_channel.t
 t/04_priority.t
+t/05_size.t
 t/release-pod-syntax.t

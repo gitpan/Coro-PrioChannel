@@ -20,4 +20,6 @@ requires:
   List::Util: 0
   strict: 0
   warnings: 0
-version: 0.001
+resources:
+  repository: git://github.com/dmcbride/Coro-PrioChannel.git
+version: 0.002

@@ -1,6 +1,6 @@
 package Coro::PrioChannel;
 {
-  $Coro::PrioChannel::VERSION = '0.001';
+  $Coro::PrioChannel::VERSION = '0.002';
 }
 use strict;
 use warnings;
@@ -66,7 +66,7 @@ Coro::PrioChannel - Priority message queues for Coro
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -93,7 +93,8 @@ defeats the purpose of a priority queue.
 
 =item put
 
-Put the given scalar into the queue.
+Put the given scalar into the queue.  Optionally provide a priority between
+L<Coro>::PRIO_MIN and L<Coro>::PRIO_MAX.
 
 =item get
 
