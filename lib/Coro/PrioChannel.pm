@@ -1,6 +1,6 @@
 package Coro::PrioChannel;
 {
-  $Coro::PrioChannel::VERSION = '0.002';
+  $Coro::PrioChannel::VERSION = '0.003';
 }
 use strict;
 use warnings;
@@ -16,6 +16,7 @@ use List::Util qw(first sum);
 sub SGET() { 0 }
 sub SPUT() { 1 }
 sub DATA() { 2 }
+sub MAX()  { PRIO_MAX - PRIO_MIN + DATA + 1 }
 
 
 sub new {
@@ -39,7 +40,7 @@ sub get {
    Coro::Semaphore::down $_[0][SGET];
    Coro::Semaphore::up   $_[0][SPUT];
 
-   my $a = first { $_ && scalar @$_ } reverse @{$_[0]}[DATA()..DATA() + PRIO_MAX()-PRIO_MIN() + 1];
+   my $a = first { $_ && scalar @$_ } reverse @{$_[0]}[DATA..MAX];
 
    ref $a ? shift @$a : undef;
 }
@@ -51,7 +52,8 @@ sub shutdown {
 
 
 sub size {
-    sum map { $_ ? scalar @$_ : 0 } @{$_[0]}[DATA..DATA + PRIO_MAX()-PRIO_MIN() + 1];
+    my $min = @_ > 1 ? $_[1] - PRIO_MIN + DATA : DATA;
+    sum map { $_ ? scalar @$_ : 0 } @{$_[0]}[$min..MAX];
 }
 
 
@@ -66,7 +68,7 @@ Coro::PrioChannel - Priority message queues for Coro
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -101,6 +103,9 @@ L<Coro>::PRIO_MIN and L<Coro>::PRIO_MAX.
 Return the next element from the queue at the highest priority, waiting if
 necessary.
 
+TODO: allow an optional parameter to wait for a message of a minimum priority
+level (i.e., ignore messages of lower priority).
+
 =item shutdown
 
 Same as Coro::Channel.
@@ -108,6 +113,12 @@ Same as Coro::Channel.
 =item size
 
 Same as Coro::Channel.
+
+An optional parameter allows you to specify the minimum priority level
+that you want to check the size against, i.e., to ignore messages of
+lower priority.  This can be used for example if you're in the middle of
+an action and you want to check if there is a higher-priority message to
+deal with before resuming the current activity.  This will not block.
 
 =back
 

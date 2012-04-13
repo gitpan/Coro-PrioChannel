@@ -18,7 +18,7 @@ my %module_build_args = (
     "Darin McBride <dmcbride\@cpan.org>"
   ],
   "dist_name" => "Coro-PrioChannel",
-  "dist_version" => "0.002",
+  "dist_version" => "0.003",
   "license" => "perl",
   "module_name" => "Coro::PrioChannel",
   "recommends" => {},
