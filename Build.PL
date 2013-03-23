@@ -7,6 +7,7 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
+    "AnyEvent::Loop" => 0,
     "Module::Build" => "0.3601",
     "Test::More" => "0.88"
   },
@@ -18,15 +19,17 @@ my %module_build_args = (
     "Darin McBride <dmcbride\@cpan.org>"
   ],
   "dist_name" => "Coro-PrioChannel",
-  "dist_version" => "0.003",
+  "dist_version" => "0.004",
   "license" => "perl",
   "module_name" => "Coro::PrioChannel",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
+    "AnyEvent" => 0,
     "Coro" => 0,
     "Coro::Semaphore" => 0,
     "List::Util" => 0,
+    "Scalar::Util" => 0,
     "strict" => 0,
     "warnings" => 0
   },

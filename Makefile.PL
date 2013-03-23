@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Priority message queues for Coro",
   "AUTHOR" => "Darin McBride <dmcbride\@cpan.org>",
   "BUILD_REQUIRES" => {
+    "AnyEvent::Loop" => 0,
     "Module::Build" => "0.3601",
     "Test::More" => "0.88"
   },
@@ -23,13 +24,15 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Coro::PrioChannel",
   "PREREQ_PM" => {
+    "AnyEvent" => 0,
     "Coro" => 0,
     "Coro::Semaphore" => 0,
     "List::Util" => 0,
+    "Scalar::Util" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.003",
+  "VERSION" => "0.004",
   "test" => {
     "TESTS" => "t/*.t"
   }
