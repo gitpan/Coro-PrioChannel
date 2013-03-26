@@ -1,6 +1,6 @@
 package Coro::PrioChannel;
 {
-  $Coro::PrioChannel::VERSION = '0.004';
+  $Coro::PrioChannel::VERSION = '0.005';
 }
 use strict;
 use warnings;
@@ -108,7 +108,7 @@ Coro::PrioChannel - Priority message queues for Coro
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 

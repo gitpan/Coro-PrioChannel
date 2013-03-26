@@ -26,6 +26,6 @@ requires:
 resources:
   homepage: https://github.com/dmcbride/Coro-PrioChannel
   repository: https://github.com/dmcbride/Coro-PrioChannel.git
-version: 0.004
+version: 0.005
 x_contributors:
   - 'Jeff Ober <jeffober@gmail.com>'

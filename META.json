@@ -56,7 +56,7 @@
          "web" : "https://github.com/dmcbride/Coro-PrioChannel"
       }
    },
-   "version" : "0.004",
+   "version" : "0.005",
    "x_contributors" : [
       "Jeff Ober <jeffober@gmail.com>"
    ]

@@ -1,6 +1,6 @@
 package Coro::PrioChannel::Multi;
 {
-  $Coro::PrioChannel::Multi::VERSION = '0.004';
+  $Coro::PrioChannel::Multi::VERSION = '0.005';
 }
 use strict;
 use warnings;
@@ -95,7 +95,7 @@ Coro::PrioChannel::Multi - Multiple-listener priority message queues for Coro
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
